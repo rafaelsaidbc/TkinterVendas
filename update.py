@@ -1,5 +1,7 @@
 import sqlite3
 from tkinter import *
+import tkinter
+from tkinter import messagebox
 
 conn = sqlite3.connect('C:\\Users\\Usuario\\PycharmProjects\\TkinterVendas\\Database\\store.db')
 c = conn.cursor()
@@ -77,7 +79,7 @@ class Database:
 
         # ========== BOTÕES ==========
         self.btn_add = Button(master, text='Atualizar', font=('arial 10 bold'), width=25, height=2, bg='steelblue',
-                              fg='white')
+                              fg='white', command=self.update)
         self.btn_add.place(x=550, y=520)
 
 
@@ -123,6 +125,24 @@ class Database:
 
         self.totalsp_e.delete(0, END)
         self.totalsp_e.insert(0, str(self.n8))
+
+    # função para a atualização dos dados
+    def update(self, *args, **kwargs):
+        self.u1 = self.name_e.get()
+        self.u2 = self.stock_e.get()
+        self.u3 = self.cp_e.get()
+        self.u4 = self.sp_e.get()
+        self.u5 = self.totalcp_e.get()
+        self.u6 = self.totalsp_e.get()
+        self.u7 = self.vendor_e.get()
+        self.u8 = self.vendor_phone_e.get()
+
+        # cria a query com os dados a serem atualizados
+        query = "UPDATE inventory SET name=?, stock=?, cp=?, sp=?, totalcp=?, totalsp=?, vendor=?, vendor_phoneno=? WHERE id=?"
+        # executa a query e atualiza os dados no banco de dados
+        c.execute(query, (self.u1, self.u2, self.u3, self.u4, self.u5, self.u6, self.u7, self.u8, self.id_leb.get()))
+        conn.commit()
+        tkinter.messagebox.showinfo('rafasaid@gmail.com', 'Cadastro atualizado com sucesso!')
 
 
 
