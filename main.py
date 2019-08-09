@@ -38,10 +38,10 @@ class Application:
         self.enterid = Label(self.left, text='Produto ID:', font=('arial 16 bold'), bg='white')
         self.enterid.place(x=0, y=80)
 
-        self.productname = Label(self.left, text='Nome do produto: ', font=('arial 27 bold'), bg='white', fg='green')
+        self.productname = Label(self.left, text='', font=('arial 20 bold'), bg='white', fg='green')
         self.productname.place(x=0, y=250)
 
-        self.pprice = Label(self.left, text='Preço do produto: ', font=('arial 27 bold'), bg='white', fg='green')
+        self.pprice = Label(self.left, text='', font=('arial 20 bold'), bg='white', fg='green')
         self.pprice.place(x=0, y=310)
 
         self.total_1 = Label(self.right, text='Total: ', font=('arial 40 bold'), bg='lightblue', fg='lightsalmon')
@@ -52,8 +52,24 @@ class Application:
         self.enterid_e.place(x=140, y=80)
 
         # ========== BOTÕES ==========
-        self.search_btn = Button(self.left, text='Pesquisar', width=22, height=2, bg='royalblue', fg='white')
+        self.search_btn = Button(self.left, text='Pesquisar', width=22, height=2, bg='royalblue', fg='white',
+                                 command=self.jx)
         self.search_btn.place(x=350, y=120)
+
+    # função para receber os dados do banco de dados
+    def jx(self, *args, **kwargs):
+        self.get_id = self.enterid_e.get()
+        query = "SELECT * FROM inventory WHERE id=?"
+        result = c.execute(query, (self.get_id,))
+        for self.r in result:
+            self.get_id = self.r[0]
+            self.get_name = self.r[1]
+            self.get_stock = self.r[2]
+            self.get_price = self.r[4]
+
+        self.productname.configure(text='Nome do produto: ' + str(self.get_name))
+        self.pprice.configure(text='Preço: R$' + str(self.get_price))
+
 
 
 root = Tk()
