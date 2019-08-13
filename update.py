@@ -14,11 +14,12 @@ for r in result:
 class Database:
     def __init__(self, master, *args, **kwargs):
         self.master = master
-        self.heading = Label(master, text='Atualização de Produtos', font=('arial 40 bold'), fg='steelblue')
+        self.heading = Label(master, text='Atualização de Produtos', font=('arial 40 bold'), fg='steelblue',
+                             bg='darkseagreen')
         self.heading.place(x=400, y=0)
 
         # ========== LABEL ==========
-        self.id_le = Label(master, text='Digite ID: ', font=('arial 18 bold'))
+        self.id_le = Label(master, text='Digite ID: ', font=('arial 18 bold'), bg='darkseagreen')
         self.id_le.place(x=0, y=70)
 
         self.id_leb = Entry(master, width=10, font=('arial 18 bold'))
@@ -28,28 +29,28 @@ class Database:
                                  command=self.search)
         self.btn_search.place(x=550, y=70)
 
-        self.name_1 = Label(master, text='Nome do Produto: ', font=('arial 18 bold'))
+        self.name_1 = Label(master, text='Nome do Produto: ', font=('arial 18 bold'), bg='darkseagreen')
         self.name_1.place(x=0, y=120)
 
-        self.stock_1 = Label(master, text='Estoque: ', font=('arial 18 bold'))
+        self.stock_1 = Label(master, text='Estoque: ', font=('arial 18 bold'), bg='darkseagreen')
         self.stock_1.place(x=0, y=170)
 
-        self.cp_1 = Label(master, text='Preço de custo: ', font=('arial 18 bold'))
+        self.cp_1 = Label(master, text='Preço de custo: ', font=('arial 18 bold'), bg='darkseagreen')
         self.cp_1.place(x=0, y=220)
 
-        self.sp_1 = Label(master, text='Preço de venda: ', font=('arial 18 bold'))
+        self.sp_1 = Label(master, text='Preço de venda: ', font=('arial 18 bold'), bg='darkseagreen')
         self.sp_1.place(x=0, y=270)
 
-        self.totalcp_1 = Label(master, text='Total do preço de custo: ', font=('arial 18 bold'))
+        self.totalcp_1 = Label(master, text='Total do preço de custo: ', font=('arial 18 bold'), bg='darkseagreen')
         self.totalcp_1.place(x=0, y=320)
 
-        self.totalsp_1 = Label(master, text='Total do preço de venda: ', font=('arial 18 bold'))
+        self.totalsp_1 = Label(master, text='Total do preço de venda: ', font=('arial 18 bold'), bg='darkseagreen')
         self.totalsp_1.place(x=0, y=370)
 
-        self.vendor_1 = Label(master, text='Nome do fornecedor: ', font=('arial 18 bold'))
+        self.vendor_1 = Label(master, text='Nome do fornecedor: ', font=('arial 18 bold'), bg='darkseagreen')
         self.vendor_1.place(x=0, y=420)
 
-        self.vendor_phone_1 = Label(master, text='Telefone do fornecedor: ', font=('arial 18 bold'))
+        self.vendor_phone_1 = Label(master, text='Telefone do fornecedor: ', font=('arial 18 bold'), bg='darkseagreen')
         self.vendor_phone_1.place(x=0, y=470)
 
         # ========== CAIXAS DE TEXTO ==========
@@ -84,7 +85,7 @@ class Database:
 
 
         # =========== TEXT BOX ==========
-        self.tbox = Text(master, width=60, height=18)
+        self.tbox = Text(master, width=60, height=18, bg='moccasin')
         self.tbox.place(x=810, y=70)
         self.tbox.insert(END, 'Último cadastro ID: ' + str(id))
 
@@ -151,4 +152,5 @@ root = Tk()
 b = Database(root)
 root.geometry('1366x768+0+0')
 root.title('FORMULÁRIO DE ATUALIZAÇÃO DE PRODUTOS')
+root.configure(background='darkseagreen')
 root.mainloop()

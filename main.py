@@ -93,17 +93,19 @@ class Application:
         self.discunt_e.place(x=190, y=410)
         self.discunt_e.insert(END, 0)
 
-        self.car_btn = Button(self.left, text='Carrinho', width=22, height=2, bg='royalblue', fg='white',
+        self.car_btn = Button(self.left, text='Adicionar ao carrinho', width=22, height=2, bg='royalblue', fg='white',
                               command=self.Car)
         self.car_btn.place(x=350, y=450)
 
-        self.change_1 = Label(self.left, text='Total a pagar: ', font=('arial 18 bold'), bg='white')
+        self.change_1 = Label(self.left, text='Total pago: ', font=('arial 18 bold'), bg='white')
         self.change_1.place(x=0, y=550)
 
         self.change_e = Entry(self.left, width=25, bd='0', font=('arial 18 bold'), bg='bisque')
         self.change_e.place(x=190, y=550)
 
-        self.change_btn = Button(self.left, text='Troco', width=22, height=2, bg='tomato', fg='white')
+        # botão do troco
+        self.change_btn = Button(self.left, text='Troco', width=22, height=2, bg='tomato', fg='white',
+                                 command=self.change_func)
         self.change_btn.place(x=350, y=590)
 
         self.gerarrec_btn = Button(self.left, text='Recibo', width=22, height=2, bg='yellow')
@@ -146,6 +148,28 @@ class Application:
             self.counter += 1
 
             self.total_1.configure(text='Total: R$ ' + str(sum(product_price)))
+
+            # limpar os campos após adicionar o produto no carrinho
+            self.quantity_1.place_forget()
+            self.quantity_e.place_forget()
+            self.discunt_1.place_forget()
+            self.discunt_e.place_forget()
+            self.productname.configure(text='')
+            self.pprice.configure(text='')
+            self.car_btn.destroy()
+            self.enterid_e.focus()
+            self.enterid_e.delete(0, END)
+
+    # função para calcular o troco
+    def change_func(self, *args, **kwargs):
+        self.amount_given = float(self.change_e.get())
+        self.our_total = float(sum(product_price))
+
+        self.to_give = self.amount_given - self.our_total
+
+        self.c_amount = Label(self.left, text='Troco: R$' + str(self.to_give), font=('arial 30 bold'), bg='white',
+                              fg='red')
+        self.c_amount.place(x=0, y=640)
 
 
 

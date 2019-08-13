@@ -14,28 +14,29 @@ for r in result:
 class Database:
     def __init__(self, master, *args, **kwargs):
         self.master = master
-        self.heading = Label(master, text='Cadastro de Produtos', font=('arial 40 bold'), fg='steelblue')
+        self.heading = Label(master, text='Cadastro de Produtos', font=('arial 40 bold'), bg='cornflowerblue')
         self.heading.place(x=400, y=0)
         # ========== LABEL ==========
-        self.name_1 = Label(master, text='Nome do Produto: ', font=('arial 18 bold'))
+        self.name_1 = Label(master, text='Nome do Produto: ', font=('arial 18 bold'), bg='cornflowerblue')
         self.name_1.place(x=0, y=70)
 
-        self.stock_1 = Label(master, text='Estoque: ', font=('arial 18 bold'))
+        self.stock_1 = Label(master, text='Estoque: ', font=('arial 18 bold'), bg='cornflowerblue')
         self.stock_1.place(x=0, y=120)
 
-        self.cp_1 = Label(master, text='Preço de custo: ', font=('arial 18 bold'))
+        self.cp_1 = Label(master, text='Preço de custo: ', font=('arial 18 bold'), bg='cornflowerblue')
         self.cp_1.place(x=0, y=170)
 
-        self.sp_1 = Label(master, text='Preço de venda: ', font=('arial 18 bold'))
+        self.sp_1 = Label(master, text='Preço de venda: ', font=('arial 18 bold'), bg='cornflowerblue')
         self.sp_1.place(x=0, y=220)
 
-        self.vendor_1 = Label(master, text='Nome do fornecedor: ', font=('arial 18 bold'))
+        self.vendor_1 = Label(master, text='Nome do fornecedor: ', font=('arial 18 bold'), bg='cornflowerblue')
         self.vendor_1.place(x=0, y=270)
 
-        self.vendor_phone_1 = Label(master, text='Telefone do fornecedor: ', font=('arial 18 bold'))
+        self.vendor_phone_1 = Label(master, text='Telefone do fornecedor: ', font=('arial 18 bold'),
+                                    bg='cornflowerblue')
         self.vendor_phone_1.place(x=0, y=320)
 
-        self.id_1 = Label(master, text='ID: ', font=('arial 18 bold'))
+        self.id_1 = Label(master, text='ID: ', font=('arial 18 bold'), bg='cornflowerblue')
         self.id_1.place(x=0, y=370)
 
         # ========== CAIXAS DE TEXTO ==========
@@ -70,7 +71,7 @@ class Database:
         self.btn_clear.place(x=370, y=420)
 
         # =========== TEXT BOX ==========
-        self.tbox = Text(master, width=60, height=18)
+        self.tbox = Text(master, width=60, height=18, bg='powderblue')
         self.tbox.place(x=810, y=70)
         self.tbox.insert(END, 'Último cadastro ID: ')
 
@@ -122,4 +123,5 @@ root = Tk()
 b = Database(root)
 root.geometry('1366x768+0+0')
 root.title('FORMULÁRIO DE CADASTRO')
+root.configure(background='cornflowerblue')
 root.mainloop()
